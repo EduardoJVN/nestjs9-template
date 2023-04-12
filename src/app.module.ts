@@ -3,6 +3,7 @@ import { ConfigModule } from '@nestjs/config';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { config, environments, validationSchema } from './config';
+import { UtilsModule } from './utils/utils.module';
 @Module({
   imports: [
     ConfigModule.forRoot({
@@ -12,6 +13,7 @@ import { config, environments, validationSchema } from './config';
       isGlobal: true,
       validationSchema,
     }),
+    UtilsModule,
   ],
   controllers: [AppController],
   providers: [AppService],
