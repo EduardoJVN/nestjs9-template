@@ -5,6 +5,7 @@ import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import cookieParser from 'cookie-parser';
 import compression from 'compression';
 import helmet from 'helmet';
+import * as swaggerStats from 'swagger-stats';
 
 import { AppModule } from './app.module';
 
@@ -46,6 +47,13 @@ async function bootstrap() {
     const document = SwaggerModule.createDocument(app, config, {
       ignoreGlobalPrefix: true,
     });
+    app.use(
+      swaggerStats.getMiddleware({
+        name: project.name,
+        version: project.version,
+        swaggerSpec: document,
+      }),
+    );
     SwaggerModule.setup(`${server.context}/${swagger.path}`, app, document, {});
   }
 
@@ -61,6 +69,10 @@ async function bootstrap() {
   await app.listen(port, async () => {
     const appServer = `http://localhost:${port}/${server.context}`;
     Logger.log(`📚 Swagger is running on: ${appServer}/${swagger.path}`, `${project.name}`);
+    Logger.log(
+      `📚 Swagger Stats is running on: http://localhost:${port}/swagger-stats`,
+      `${project.name}`,
+    );
     Logger.log(`🚀 Application is running on: ${appServer}`, `${project.name}`);
   });
 }
