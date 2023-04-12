@@ -7,10 +7,10 @@ import { config, environments, validationSchema } from './config';
   imports: [
     ConfigModule.forRoot({
       envFilePath: environments[`${process.env.NODE_ENV}`],
-        ignoreEnvFile: process.env.NODE_ENV === 'production' || false,
-        load: [config],
-        isGlobal: true,
-        validationSchema,
+      ignoreEnvFile: process.env.NODE_ENV === 'production' || false,
+      load: [config],
+      isGlobal: true,
+      validationSchema,
     }),
   ],
   controllers: [AppController],
