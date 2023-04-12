@@ -29,4 +29,16 @@ export default registerAs('config', () => ({
   },
   params: {},
   services: {},
+  postgres: {
+    host: process.env.DB_HOST || 'localhost',
+    port: process.env.DB_PORT || 5432,
+    user: process.env.DB_USER || 'root',
+    password: process.env.DB_PASSWORD || '',
+    database: process.env.DB_NAME || 'test',
+    logging: process.env.DB_LOGGIN || 'all',
+    type: process.env.DB_TYPE || 'postgres',
+    sync: process.env.DB_SYNC == '1' ? true : false,
+    autoSchemaSync: process.env.DB_AUTO_SCHEMA_SYNC == '1' ? true : false,
+    ssl: process.env.DB_SSL == '1' ? true : false,
+  },
 }));
