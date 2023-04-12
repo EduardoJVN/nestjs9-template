@@ -9,9 +9,9 @@ export default registerAs('config', () => ({
     version: PACKAGE_JSON.version,
     description: PACKAGE_JSON.description,
     author: PACKAGE_JSON.author,
-    //   repository: PACKAGE_JSON.repository,
-    //   bugs: PACKAGE_JSON.bugs,
-    //   homepage: PACKAGE_JSON.homepage,
+    repository: PACKAGE_JSON.repository,
+    bugs: PACKAGE_JSON.bugs,
+    homepage: PACKAGE_JSON.homepage,
   },
   server: {
     isProd: process.env.NODE_ENV === 'production',

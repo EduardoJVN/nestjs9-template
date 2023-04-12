@@ -2,9 +2,21 @@
   "name": "nest9-template",
   "version": "0.0.2",
   "description": "",
-  "author": "",
+  "author": {
+    "name": "test",
+    "email": "email@email.com",
+    "url": "https://github.com/"
+  },
   "private": true,
   "license": "UNLICENSED",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/"
+  },
+  "bugs": {
+    "url": "https://github.com/issues"
+  },
+  "homepage": "https://docs.nestjs.com/",
   "scripts": {
     "prebuild": "rimraf dist",
     "build": "cross-env NODE_ENV=build nest build --webpack",
