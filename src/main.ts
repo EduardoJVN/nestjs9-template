@@ -56,7 +56,6 @@ async function bootstrap() {
     );
     SwaggerModule.setup(`${server.context}/${swagger.path}`, app, document, {});
   }
-
   if (server.corsEnabled) {
     app.enableCors({
       origin: server.origins,
@@ -68,12 +67,14 @@ async function bootstrap() {
 
   await app.listen(port, async () => {
     const appServer = `http://localhost:${port}/${server.context}`;
+    const appServerGraphql = `http://localhost:${port}/graphql`;
     Logger.log(`📚 Swagger is running on: ${appServer}/${swagger.path}`, `${project.name}`);
     Logger.log(
       `📚 Swagger Stats is running on: http://localhost:${port}/swagger-stats`,
       `${project.name}`,
     );
     Logger.log(`🚀 Application is running on: ${appServer}`, `${project.name}`);
+    Logger.log(`🚀 Application is running on: ${appServerGraphql}`, `${project.name}`);
   });
 }
 
